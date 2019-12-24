@@ -1,0 +1,30 @@
+<h1>Step 3 </h1>
+
+<%= form_for @user, url: register_step3_user_path(@user.uuid) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :user_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :user_phone %>
+  </div>
+
+  <div class="actions">
+    <%= link_to  "back", edit_register_step2_user_path(@user.uuid) %>
+    <%= form.submit "create user"%>
+  </div>
+<% end %>

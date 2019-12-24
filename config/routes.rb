@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :register do
+    namespace :step1 do
+      resources :users, except: [:index, :destroy]
+    end
+    namespace :step2 do
+      resources :users, only: [:edit, :update]
+    end
+    namespace :step3 do
+      resources :users, only: [:edit, :update]
+    end
+  end
 end
